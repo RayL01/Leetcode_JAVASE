@@ -1,4 +1,7 @@
 package com.shady;
+
+import org.junit.Test;
+
 //125. Valid Palindrome
 //A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
 //
@@ -24,9 +27,6 @@ package com.shady;
 //Since an empty string reads the same forward and backward, it is a palindrome.
 public class ValidPalindrome {
 
-    class Solution {//Solution 1 Time complexity: O(n)
-        //Space complexity: O(n).
-        //This solution uses the brute force to solve the problem.
         public boolean isPalindrome(String s) {//this solution
             StringBuilder builder = new StringBuilder();
             for(char a : s.toCharArray()){
@@ -42,5 +42,29 @@ public class ValidPalindrome {
             return false;
 
         }
+        public boolean isPalindrome1(String s) {//Solution 2. Using two pointers at each end of the string.
+            int length = s.length();
+            for(int i = 0, j = length - 1; i < j; ){
+                if(!Character.isLetterOrDigit(s.charAt(i))){
+                    i++;
+                    continue;//跳到下一个i，j的位置不变
+                }
+                if(!Character.isLetterOrDigit(s.charAt(j))){
+                    j--;
+                    continue;
+                }
+                if(Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))){
+                    return false;
+                }
+                i++;
+                j--;
+            }
+            return true;
+
+        }
+    @Test
+    public  void test(){
+            String s = "A man, a plan, a canal: Panama";
+        System.out.println(isPalindrome1(s));
     }
 }
