@@ -49,6 +49,12 @@ import java.util.List;
 //        Input: dummy_input = [""]
 //        Output: [""]
 public class EncodeAndDecode {
+    //Solution 1
+    //Complexity Analysis
+    //
+    //Time complexity : O(N) both for encode and decode, where N is a number of strings in the input array.
+    //
+    //Space complexity : O(1) for encode to keep the output, since the output is one string. {O}(N)O(N) for decode keep the output, since the output is an array of strings.
     public class Codec {
 
         // Encodes a list of strings to a single string.
