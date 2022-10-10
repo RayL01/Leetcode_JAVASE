@@ -56,11 +56,18 @@ public class TopKFrequent {
          * Time Complexity: O(nlog(k))
          * Space Complexity: O(n)
          */
+        /*Input: nums = [1,1,1,2,2,3], k = 2
+        Output: [1,2]*/
+        /*
+        map : 1-3
+              2-2
+              3-1
+         */
         //leetcode solution 1
         public int[] topKFrequent1(int[] nums, int k) {
             int[] arr = new int[k];
             HashMap<Integer, Integer> map = new HashMap<>();
-            for (int num : nums) map.put(num, map.getOrDefault(num, 0) + 1);
+            for (int num : nums) map.put(num, map.getOrDefault(num, 0) + 1);//
             PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>(
                     (a, b) ->
                             a.getValue() - b.getValue()
