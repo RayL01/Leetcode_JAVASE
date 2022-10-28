@@ -110,7 +110,7 @@ public class ThreeSum {
         return res;
     }
     void twoSum(int[] nums, int i, List<List<Integer>> res) {
-        var seen = new HashSet<Integer>();
+        HashSet seen = new HashSet<Integer>();
         for (int j = i + 1; j < nums.length; ++j) {
             int complement = -nums[i] - nums[j];
             if (seen.contains(complement)) {

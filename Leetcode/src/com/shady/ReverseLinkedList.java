@@ -30,5 +30,27 @@ public class ReverseLinkedList {
       // So that we get the head pointer in the end
       return PrevNode;
     }
+
+
+    //iterative approach of reversing a linked list
+    public ListNode reverseList_Ite(ListNode head){
+      ListNode pre = null;//store the pointer to the previous node
+      ListNode cur = head;//the pointer used to traverse the linked list
+      //5->|2->3->4|->1
+      while(cur != null){
+        ListNode nextNode = cur.next;// store the next node, since we will set .next to be pointer pointing to pre;
+        cur.next = pre;
+        pre = cur;
+        cur = nextNode;
+        //and we need to move rightward the pre pointer
+
+      }
+
+
+      return pre;
+
+    }
   }
+
+
 }

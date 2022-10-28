@@ -33,6 +33,7 @@ public class ValidPalindrome {
                 if(Character.isLetterOrDigit(a)){
                     builder.append(Character.toLowerCase(a));
                 }
+
             }
             String s1 = builder.toString();
             String s2 = builder.reverse().toString();
@@ -66,5 +67,8 @@ public class ValidPalindrome {
     public  void test(){
             String s = "A man, a plan, a canal: Panama";
         System.out.println(isPalindrome1(s));
+        String s1 = "abcd";
+            String s2 = s1.substring(1,2);
+        System.out.println(s2);
     }
 }
