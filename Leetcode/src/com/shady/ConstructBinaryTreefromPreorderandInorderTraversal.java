@@ -28,7 +28,7 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
 
       TreeNode treeNode = new TreeNode(root);
       treeNode.left = build(preorder, prelo + 1, prelo + leftsize, inorder, inlo, index - 1);
-      treeNode.right = build(preorder, prelo + leftsize + 1, prehi, inorder, index + 1, inhi)
+      treeNode.right = build(preorder, prelo + leftsize + 1, prehi, inorder, index + 1, inhi);
       //call the left and right recursion
 
 
