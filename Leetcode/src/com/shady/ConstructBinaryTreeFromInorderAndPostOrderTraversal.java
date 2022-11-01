@@ -1,6 +1,7 @@
 package com.shady;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ConstructBinaryTreeFromInorderAndPostOrderTraversal {
   /**
@@ -19,31 +20,27 @@ public class ConstructBinaryTreeFromInorderAndPostOrderTraversal {
    * }
    */
   class Solution {
-    HashMap<Integer, Integer>ValToIndex = new HashMap<>();//store the mapping from value to index in the inorder array
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
+    Map<Integer, Integer> ValToIndex = new HashMap<>();
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
       for (int i = 0; i < inorder.length; i++) {
         ValToIndex.put(inorder[i], i);
       }
-
-
-
-      return build(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
+      return build(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1);
     }
-    public TreeNode build(int preorder[], int prelo, int prehi, int inorder[], int inlo, int inhi){
-      //base case
-      if(prelo > prehi){
+    public TreeNode build(int [] inorder, int inLo, int inHi, int [] postorder, int poLo, int poHi){
+      if(inLo > inHi){
         return null;
       }
-
-      int root = preorder[prelo];
+      int root = postorder[poHi];
       int index = ValToIndex.get(root);
-      int leftsize = index - inlo; // get the left size;
+      int leftsize = index - inLo; // get the left size;
       //create the root node
-
+      int rightsize = inHi - index;
       TreeNode treeNode = new TreeNode(root);
-      treeNode.left = build(preorder, prelo + 1, prelo + leftsize, inorder, inlo, index - 1);
-      treeNode.right = build(preorder, prelo + leftsize + 1, prehi, inorder, index + 1, inhi);
-      //call the left and right recursion
+      treeNode.left = build(inorder, inLo, index - 1, postorder, poLo, poLo + leftsize -1);
+      treeNode.right = build(inorder, index + 1, inHi, postorder, poLo + leftsize, poHi -1 );
+
+
 
 
 
