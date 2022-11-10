@@ -1,6 +1,7 @@
 package com.shady;
 
 public class UniqueBinarySearchTrees {
+  //Time: n2   Space: n2
   class Solution {
     int [][] memo;
     int numTrees(int n) {
