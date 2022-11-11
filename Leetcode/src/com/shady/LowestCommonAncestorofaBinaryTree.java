@@ -7,7 +7,7 @@ package com.shady;
  * @Date: 2022/11/10/22:06
  * @Description:
  */
-public class LowestCommonAncestorofaBinarySearchTree {
+public class LowestCommonAncestorofaBinaryTree {
   class Solution {
     /**
      * Find a node which is the ancestor of the given nodes.
