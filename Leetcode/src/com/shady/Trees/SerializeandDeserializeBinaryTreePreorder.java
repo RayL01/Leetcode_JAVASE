@@ -1,10 +1,15 @@
-package com.shady;
+package com.shady.Trees;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SerializeandDeserializeBinaryTreePostorder {
-
+//Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+//
+//Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
+//
+//Clarification: The input/output format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
+//link: https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
+public class SerializeandDeserializeBinaryTreePreorder {
   public class Codec {
     String SP = ",";
     String NULL = "#";
@@ -20,9 +25,10 @@ public class SerializeandDeserializeBinaryTreePostorder {
         sb.append(NULL).append(SP);
         return;
       }
+
+      sb.append(root.val).append(SP);
       serialize(root.left);
       serialize(root.right);
-      sb.append(root.val).append(SP);
       return;
     }
 
@@ -32,14 +38,14 @@ public class SerializeandDeserializeBinaryTreePostorder {
 
       List<String> list = new ArrayList<>();
       for (String s: data.split(SP)){
-        list.add(s);
+          list.add(s);
       }
       return buildTrees(list);
     }
     public TreeNode buildTrees(List<String> list){
       //base case
-      String s = list.get(list.size() - 1);
-      list.remove(list.size() - 1);
+      String s = list.get(0);
+      list.remove(0);
       if(s == null){
         return null;
       }
@@ -47,10 +53,10 @@ public class SerializeandDeserializeBinaryTreePostorder {
         return null;
       }
       TreeNode root = new TreeNode(Integer.parseInt(s));
-      root.right = buildTrees(list);
       root.left = buildTrees(list);
-
+      root.right = buildTrees(list);
       return root;
     }
   }
+
 }

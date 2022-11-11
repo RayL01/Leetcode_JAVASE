@@ -1,4 +1,4 @@
-package com.shady;
+package com.shady.Trees;
 
 /**
  * Created with IntelliJ IDEA.

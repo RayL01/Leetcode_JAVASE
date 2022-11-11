@@ -1,5 +1,7 @@
 package com.shady;
 
+import com.shady.Trees.TreeNode;
+
 import java.util.HashMap;
 import java.util.Map;
 

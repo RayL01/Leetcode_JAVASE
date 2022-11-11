@@ -1,4 +1,4 @@
-package com.shady;
+package com.shady.Trees;
 
 public class FlattenBinaryTreetoLinkedList {
   //Given the root of a binary tree, flatten the tree into a "linked list":

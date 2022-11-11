@@ -1,4 +1,4 @@
-package com.shady;
+package com.shady.Trees;
 
 import java.util.ArrayList;
 import java.util.HashMap;

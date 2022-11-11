@@ -1,5 +1,4 @@
-package com.shady;
-
+package com.shady.Trees;
 
 
 //Given the root of a binary tree, invert the tree, and return its root.
