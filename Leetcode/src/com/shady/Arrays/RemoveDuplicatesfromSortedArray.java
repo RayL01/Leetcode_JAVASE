@@ -6,6 +6,7 @@ package com.shady.Arrays;
  * @Author: shadyyyyyl
  * @Date: 2022/11/12/18:44
  * @Description: Delete duplicates in a sorted array and do not return a new array(modify the original array)
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-array/submissions/
  */
 public class RemoveDuplicatesfromSortedArray {
   class Solution {
