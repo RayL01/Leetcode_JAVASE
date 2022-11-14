@@ -31,7 +31,25 @@ import java.util.*;
 //Input: nums = [0,0,0]
 //Output: [[0,0,0]]
 //Explanation: The only possible triplet sums up to 0.
+
 public class ThreeSum {
+    public List<List<Integer>> ThreeSum(int[] nums){//3 numbers add up to 0
+        Arrays.sort(nums);//First sort the given list
+        List<List<Integer>> list = new ArrayList<>();
+        //set up a loop and execute twoSum for each number in the iteration
+        for (int i = 0; i < nums.length; i++) {
+            int x = -nums[i];
+            list = TwoSum2.twoSum2(nums, i + 1, x);
+            for(List<Integer> integers : list ){
+                integers.add(x);
+            }
+            //Since there may exist some duplicated values in the given array, we should skip those duplicates
+
+            // 1 1 1 2 3 4 5 6
+            while(i < nums.length && nums[i] == nums[++i]);
+        }
+        return list;
+    }
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         Set<List<Integer>> hashset = new HashSet<>();
