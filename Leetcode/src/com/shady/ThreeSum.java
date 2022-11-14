@@ -33,7 +33,7 @@ import java.util.*;
 //Explanation: The only possible triplet sums up to 0.
 
 public class ThreeSum {
-    public List<List<Integer>> ThreeSum(int[] nums){//3 numbers add up to 0
+    public static List<List<Integer>> ThreeSum(int[] nums){//3 numbers add up to 0
         Arrays.sort(nums);//First sort the given list
         List<List<Integer>> list = new ArrayList<>();
         //set up a loop and execute twoSum for each number in the iteration
