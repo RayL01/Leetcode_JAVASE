@@ -10,7 +10,7 @@ package com.shady.Arrays;
  */
 public class RangeSumQueryImmutable {
   class NumArray {
-    int[] pre;
+    int[] pre;//Sacrifice space complexity  for time complexity
     public NumArray(int[] nums) {
         pre = new int[nums.length];
       for (int i = 0; i < nums.length; i++) {
