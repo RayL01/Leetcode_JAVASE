@@ -4,13 +4,12 @@ package com.shady.Arrays;
  * Created with IntelliJ IDEA.
  *
  * @Author: shadyyyyyl
- * @Date: 2022/11/15/23:01
- * @Description: Using differential array
- * Time: O(n) Space: O(n)
- * https://leetcode.com/problems/range-addition/
+ * @Date: 2022/11/16/22:39
+ * @Description: car pooling solved by difference array
+ * https://labuladong.github.io/algo/2/20/25/
  */
-public class RangeAddition {
-   static class Difference{
+public class carPooling {
+  class Difference{
     private int[] diff;
     public Difference(int[] nums){
       diff = new int[nums.length];
@@ -47,26 +46,28 @@ public class RangeAddition {
       int res[] = new int[diff.length];
       res[0] = diff[0];
       for (int i = 1; i < diff.length; i++) {
-          res[i] = diff[i] + res[i - 1];
+        res[i] = diff[i] + res[i - 1];
       }
       return res;
     }
 
   }
-
-
-
-
-
-  public int[] getModifiedArray(int length, int[][] updates) {
-      //Use the diffrece class and call its methods to solve this problem.
-    int nums[] = new int[length];
-    Difference difference = new Difference(nums);
-    for (int[] a : updates) {
-      difference.modify(a[0], a[1], a[2]);
-
-
+  public boolean carPooling(int[][] trips, int capacity) {
+      int[] sums = new int[1001];//the length of the difference array
+      Difference difference = new Difference(sums);
+    for (int[] trip : trips){
+//      Input: trips = [[2,1,5],[3,3,7]], capacity = 4
+//      Output: false
+      difference.modify(trip[1], trip[2] - 1, trip[0]);
     }
-    return difference.getResult();
+    int[] res = difference.getResult();
+    for (int i = 0; i < res.length; i++) {
+      if(res[i] > capacity){
+        return false;
+      }
+    }
+    return true;
   }
+
+
 }
