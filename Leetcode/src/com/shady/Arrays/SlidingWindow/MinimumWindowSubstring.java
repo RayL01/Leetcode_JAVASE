@@ -41,7 +41,7 @@ public class MinimumWindowSubstring {
       //update information for windowmap and targetmap
       if(targetMap.containsKey(c)){//put it into the windowHashmap
         windowMap.put(c, windowMap.getOrDefault(c, 0) + 1);
-        if(windowMap.get(c) == targetMap.get(c)){
+        if(windowMap.get(c).equals(targetMap.get(c))){
           valid++;
         }
       }
@@ -70,7 +70,7 @@ public class MinimumWindowSubstring {
         if(windowMap.containsKey(a)){
 
           //it is possible that the current number of a certain element in the window is larger than that in the target, so we should determine whether they are the same
-          if(windowMap.get(a) == targetMap.get(a)){
+          if(windowMap.get(a).equals( targetMap.get(a))){
             valid--;
           }
           windowMap.put(a, windowMap.get(a) - 1);
