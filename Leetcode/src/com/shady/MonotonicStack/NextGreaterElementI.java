@@ -1,4 +1,4 @@
-package com.shady;
+package com.shady.MonotonicStack;
 
 import java.util.HashMap;
 import java.util.Map;
