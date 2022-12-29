@@ -1,5 +1,7 @@
 package com.shady.Graph;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,8 @@ public class AllPathsFromSourcetoTarget {
     int m = graph.length;
     if(n == m - 1){
       //it has reached the end
+      //Since res store the address of path, and if path changes, the path in the res also changes,
+      //so we should create a new object duplicated from path to ensure the invariance.
       res.add(new ArrayList<>(path));
 
     }
@@ -32,5 +36,10 @@ public class AllPathsFromSourcetoTarget {
     }
     path.remove(path.size() - 1);
 
+  }
+  @Test
+  public void test(){
+    int[][] graph = {{1,2},{3},{3},{}};
+    allPathsSourceTarget(graph);
   }
 }
