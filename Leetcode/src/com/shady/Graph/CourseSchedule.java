@@ -1,7 +1,9 @@
 package com.shady.Graph;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,6 +26,47 @@ public class CourseSchedule {
       traverse(graph, i);
     }
     return !hasCyle;
+
+  }
+  public boolean canFinish_BFS(int numCourses, int[][] prerequisites){
+      List<Integer> graph[] = buildGraph(numCourses,prerequisites);
+      int[] indegree = new int[numCourses];
+      for(int[] edge : prerequisites){
+        int from = edge[1];
+        int to = edge[0];
+        indegree[to]++;
+      }
+
+      //Then we should traverse the tree in a Queue.
+      Queue<Integer> queue = new LinkedList<>();
+      //Next, we should find the starting point(indegree = 0)
+
+      for (int i = 0; i < numCourses; i++) {
+          if(indegree[i] == 0 ){
+            queue.offer(i);
+          }
+      }
+
+      //Record the number of visited nodes
+      int count = 0;
+
+      //BFS
+    while(!queue.isEmpty()){
+      int cur = queue.poll();
+      count++;
+      //Then we should decrease the indegree of its neighbors
+      for (int x :graph[cur]
+           ) {
+        indegree[x]--;
+        if(indegree[x] == 0){
+          queue.offer(x);
+        }
+      }
+    }
+
+    //after BFS, if there are nodes left unvisited, it indicates a circle
+    return count == numCourses;
+
 
   }
   List<Integer>[] buildGraph(int numCourses, int[][] prerequisites){
