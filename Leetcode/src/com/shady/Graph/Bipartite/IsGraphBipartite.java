@@ -1,5 +1,8 @@
 package com.shady.Graph.Bipartite;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -51,6 +54,30 @@ public class IsGraphBipartite {
         }
       }
     }
-
+  }
+  public void BFS_Traverse(int [][] graph, int v){
+    if(!Is_Bipartite){
+      return;//If it's already false, return.
+    }
+    Queue<Integer> queue = new LinkedList<>();
+    visited[v] = true;
+    queue.offer(v);
+    while(!queue.isEmpty()){
+      int x = queue.poll();
+      for (int s : graph[x]) {
+        //if s is unvisited, we should
+        if(!visited[s]){
+          //color it with the other color
+          color[s] = !color[x];
+          visited[s] = true;
+          queue.offer(s);
+        }else{//We should determine if their colors are the same
+          if(color[s] == color[x]){
+            Is_Bipartite = false;
+            return;
+          }
+        }
+      }
+    }
   }
 }
