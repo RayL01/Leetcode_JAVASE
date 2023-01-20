@@ -17,27 +17,17 @@ public class FindTheCelebrity {
   public class Solution extends Relation {
     public int findCelebrity(int n) {
       if(n == 1) return 0; //exception, return false
-      //Use a linkedlist as a container
-      LinkedList<Integer> q = new LinkedList<>();
-      for (int i = 0; i < n; i++) {
-        q.add(i);
-      }
 
-      //Then each time we pull two elements out of the container and exclude one from the candidate queue.
-      while(q.size() > 1){
-        int cand = q.pollFirst();
-        int nobody = q.pollFirst();
-
-        //Then we should determine whether the current candidate is a potential celebrity, if so add it to queue.
-        //Otherwise nobody is likely to be a celebrity
-        if(knows(nobody, cand) && !knows(cand, nobody)){
-          q.add(cand);
-        }eles{
-          q.add(nobody);
+      int cand = 0;
+      for (int nobody = 1; nobody < n; nobody++) {
+        //If the current candidate is not the celebrity, we switch the cand to current nobody and move on
+        if(knows(cand, nobody) || !knows(nobody, cand)){
+          cand = nobody;
         }
+        //No need for else, since if current cand is a potential candidate, we can keep going and see if other nobody matches with the condition.
       }
       //After the loop, there's only one element in the queue, but we still need to make sure that this one is who we are looking for
-      int cand = q.pollFirst();
+
       int i;
       for ( i = 0; i < n; i++) {
         if(cand == i)continue;
