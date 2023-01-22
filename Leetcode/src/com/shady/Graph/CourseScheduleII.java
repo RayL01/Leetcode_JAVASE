@@ -65,6 +65,7 @@ public class CourseScheduleII {
 
     for(Integer j : graph[i]){
       traverse(graph, j);
+      String s;
     }
 
   }
