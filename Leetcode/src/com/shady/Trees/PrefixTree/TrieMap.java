@@ -9,7 +9,7 @@ package com.shady.Trees.PrefixTree;
  */
 public class TrieMap<T> {
   //The number of ASCII code
-  private static final int R = 256;
+  private static final int R = 123;
 
   //The number of keys in the map
   private int size = 0;
@@ -107,6 +107,26 @@ public class TrieMap<T> {
     return "";
 
 
+  }
+
+  public boolean HaskeyWithPattern(String pattern){
+    return HaskeyWithPattern(root, pattern, 0);
+  }
+  public boolean HaskeyWithPattern(TrieNode<T> node, String pattern, int i){
+    if(node == null) return false;
+    if(i == pattern.length()){
+      return node.val != null;
+    }
+    char c = pattern.charAt(i);
+    //Then, we should determine the type of the current letter
+    if(c == '.'){
+      for (int j = 0; j < R; j++) {
+        if(HaskeyWithPattern(node.children[j],pattern,i+1))return true;
+      }
+    }else{
+      return HaskeyWithPattern(node.children[c],pattern, i + 1);
+    }
+    return false;
   }
 
 
