@@ -9,7 +9,7 @@ package com.shady.Trees.PrefixTree;
  */
 public class TrieMap<T> {
   //The number of ASCII code
-  private static final int R = 123;
+  private static final int R = 26;
 
   //The number of keys in the map
   private int size = 0;
@@ -38,7 +38,7 @@ public class TrieMap<T> {
 
 
     char c = key.charAt(i);
-    node.children[c] = put(node.children[c], key, val, i + 1);
+    node.children[c] = put(node.children[c - 'a'], key, val, i + 1);
     return node;
   }
 
@@ -67,7 +67,7 @@ public class TrieMap<T> {
         return null;
       }
       char c = key.charAt(i);
-      cur = cur.children[c];
+      cur = cur.children[c - 'a'];
     }
     //after the loop, return cur;
     return cur;
@@ -96,7 +96,7 @@ public class TrieMap<T> {
       if(cur == null) return ""; //exception
       if(cur.val != null) return query.substring(0,i);
       char c = query.charAt(i);
-      cur = cur.children[c];
+      cur = cur.children[c - 'a'];
 
     }
     //However, the loop above does not include the case when the tree contains a prefix of the whole string
@@ -124,7 +124,7 @@ public class TrieMap<T> {
         if(HaskeyWithPattern(node.children[j],pattern,i+1))return true;
       }
     }else{
-      return HaskeyWithPattern(node.children[c],pattern, i + 1);
+      return HaskeyWithPattern(node.children[c - 'a'],pattern, i + 1);
     }
     return false;
   }
