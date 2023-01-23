@@ -83,4 +83,31 @@ public class TrieMap<T> {
   }
 
 
+  /**
+   * Find the shortest prefix of the given string in the map
+   * @param query
+   * @return
+   */
+  public String shortestPrefixOf(String query){
+    TrieNode<T> cur = root;
+
+
+    for (int i = 0; i < query.length(); i++) {
+      if(cur == null) return ""; //exception
+      if(cur.val != null) return query.substring(0,i);
+      char c = query.charAt(i);
+      cur = cur.children[c];
+
+    }
+    //However, the loop above does not include the case when the tree contains a prefix of the whole string
+    //In this case, we should determine whether cur.val is null. If so, we must return the whole string as the prefix
+    if(cur != null && cur.val != null){
+      return query;
+    }
+    return "";
+
+
+  }
+
+
 }
