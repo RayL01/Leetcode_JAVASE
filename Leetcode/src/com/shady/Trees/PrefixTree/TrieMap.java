@@ -1,5 +1,8 @@
 package com.shady.Trees.PrefixTree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -38,7 +41,7 @@ public class TrieMap<T> {
 
 
     char c = key.charAt(i);
-    node.children[c] = put(node.children[c - 'a'], key, val, i + 1);
+    node.children[c - 'a'] = put(node.children[c - 'a'], key, val, i + 1);
     return node;
   }
 
@@ -46,7 +49,7 @@ public class TrieMap<T> {
     return get(key) != null;
 
   }
-  private T get(String key){
+  public T get(String key){
     TrieNode<T> s = getNode(root, key);
     if(s == null || s.val == null){
       return null;
@@ -127,6 +130,72 @@ public class TrieMap<T> {
       return HaskeyWithPattern(node.children[c - 'a'],pattern, i + 1);
     }
     return false;
+  }
+
+  /**
+   * return the list of keys with the given prefix
+   * @param prefix
+   * @return
+   */
+  public List<String> keysWithPrefix(String prefix){
+    List<String> res = new ArrayList<>();
+    //First, we should reach the node at the end of the prefix
+    TrieNode<T> x = getNode(root, prefix);
+    traverse(x, new StringBuilder(prefix), res); //注意，这里我们需要将StringBuilder初始化为(new Stringbuilder(prefix)
+    return res;
+  }
+  public void traverse(TrieNode<T> node, StringBuilder path, List<String> res){
+    if(node == null) return;
+    if(node.val != null){
+      res.add(path.toString());
+    }
+
+
+    for(char c = 'a'; c < 'a' + R; c ++){
+      path.append(c);
+      traverse(node.children[c - 'a'],path, res);
+      path.deleteCharAt(path.length() - 1);
+    }
+  }
+
+  public void remove(String key){
+    if(!contains(key)) return;
+
+    root = remove(root,key,0);
+    size--;
+  }
+
+
+
+
+
+  /**
+   * delete the key from the tree
+   * @param key
+   */
+  public TrieNode<T> remove(TrieNode<T> node, String key,int i){
+    //In order to remove the node, we should assign null to each of them.
+    //We can use postorder traverse to finish it(node. child = remove()   )
+    if(node == null){
+      return null;
+    }
+    if(i == key.length()){
+      node.val = null;
+    }else{
+      char c = key.charAt(i);
+      node.children[c - 'a'] = remove(node.children[c - 'a'],key, i+ 1);
+    }
+
+    if(node.val != null){
+      return node;
+    }
+
+    for (int j = 0; j < R; j++) {
+      if(node.children[j] != null){
+        return node;
+      }
+    }
+    return null;
   }
 
 
