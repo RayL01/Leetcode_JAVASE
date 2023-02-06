@@ -3,27 +3,25 @@ package com.shady.BackTracking;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.zip.CheckedInputStream;
 
 /**
  * Created with IntelliJ IDEA.
  *
  * @Author: shadyyyyyl
- * @Date: 2023/02/05/22:36
+ * @Date: 2023/02/06/13:09
  * @Description:
- * https://leetcode.com/problems/n-queens/
- * Input: n = 4
- * Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
- * Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above
+ * https://leetcode.com/problems/n-queens-ii/
+ * Input : n = 4
+ * Output: 2
+ * Explanation: There are two distinct solutions to the 4-queens puzzle as shown.
  */
-public class nQueens {
+public class nQueensII {
   //nested arraylist to store result
-  List<List<String>> res;
-  public List<List<String>> solveNQueens(int n) {
+  int total = 0;
+  public int totalNQueens(int n) {
     //First we should initialize the nested arraylist ('.' indicates empty)
-    res = new ArrayList<>();
+
 
     //Initialize the board with "."
     List<String> board = new ArrayList<>();
@@ -35,7 +33,7 @@ public class nQueens {
       board.add(string);
     }
     backtrack(board, 0);
-    return res;
+    return total;
 
   }
   void backtrack(List<String> board, int row){
@@ -46,7 +44,7 @@ public class nQueens {
       //We should notice that each res[i] is pointing to the reference of a board, so
       //if we simply add board, any update on board would modify the data the res as well
       //Therefore, we should create a new object which is independent on the object board.
-      res.add(new ArrayList<>(board));
+      total++;
       return;
     }
 
@@ -102,9 +100,5 @@ public class nQueens {
     }
     return true;
   }
-  @Test
-  public void test(){
-    boolean[] a = new boolean[3];
-    System.out.println(a);
-  }
+
 }

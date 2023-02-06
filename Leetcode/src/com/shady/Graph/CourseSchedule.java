@@ -1,5 +1,7 @@
 package com.shady.Graph;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -99,5 +101,6 @@ public class CourseSchedule {
     //after traverse, we will leave the node
     onPath[i] = false;
   }
+
 
 }
