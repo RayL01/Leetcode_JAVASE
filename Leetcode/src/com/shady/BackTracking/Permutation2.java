@@ -7,5 +7,5 @@ package com.shady.BackTracking;
  * @Date: 2023/02/28/00:56
  * @Description:
  */
-public class Permutation1 {
+public class Permutation2 {
 }
