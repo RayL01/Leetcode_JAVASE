@@ -1,4 +1,4 @@
-package com.shady;
+package com.shady.Arrays.TwoPointers;
 
 import java.util.ArrayList;
 import java.util.Arrays;

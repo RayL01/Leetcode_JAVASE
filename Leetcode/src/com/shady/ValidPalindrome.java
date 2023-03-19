@@ -65,10 +65,8 @@ public class ValidPalindrome {
         }
     @Test
     public  void test(){
-            String s = "A man, a plan, a canal: Panama";
-        System.out.println(isPalindrome1(s));
-        String s1 = "abcd";
-            String s2 = s1.substring(1,2);
+         String s = "123";
+         String s2 = s.substring(1,2);
         System.out.println(s2);
     }
 }

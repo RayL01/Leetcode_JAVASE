@@ -1,4 +1,4 @@
-package com.shady.Arrays;
+package com.shady.Arrays.TwoPointers;
 
 /**
  * Created with IntelliJ IDEA.

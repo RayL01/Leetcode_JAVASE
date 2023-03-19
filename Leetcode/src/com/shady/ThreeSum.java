@@ -1,5 +1,7 @@
 package com.shady;
 
+import com.shady.Arrays.TwoPointers.TwoSum2;
+
 import org.junit.Test;
 
 import java.util.*;
