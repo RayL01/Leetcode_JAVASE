@@ -1,4 +1,6 @@
-package com.shady;
+package com.shady.Arrays.TwoPointers;
+
+import com.shady.ListNode;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,8 +20,8 @@ public class LinkedListCycle2 {
    * @param head
    * @return
    */
-  public ListNode detectCycle(ListNode head) {
-    Set<ListNode> visited = new HashSet<>();
+  public com.shady.ListNode detectCycle(com.shady.ListNode head) {
+    Set<com.shady.ListNode> visited = new HashSet<>();
     ListNode node = head;
     while(node != null){
       if(visited.contains(node)){

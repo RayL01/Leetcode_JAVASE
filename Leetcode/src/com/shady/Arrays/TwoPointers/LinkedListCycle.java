@@ -1,4 +1,6 @@
-package com.shady;
+package com.shady.Arrays.TwoPointers;
+
+import com.shady.ListNode;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -24,8 +26,8 @@ public class LinkedListCycle {
      * @param head
      * @return
      */
-    public boolean hasCycle(ListNode head) {
-      Set<ListNode> nodes = new HashSet<>();
+    public boolean hasCycle(com.shady.ListNode head) {
+      Set<com.shady.ListNode> nodes = new HashSet<>();
       while(head != null){
         if(nodes.contains(head)){
           return true;
@@ -51,12 +53,12 @@ public class LinkedListCycle {
      * @param head
      * @return
      */
-    public boolean hasCycle2(ListNode head){
+    public boolean hasCycle2(com.shady.ListNode head){
       //In this case, the space complexity is O(1) since we don't use the extra space
       if(head == null){
         return false;
       }
-      ListNode slow = head;
+      com.shady.ListNode slow = head;
       ListNode fast = head.next;
 
       while(slow != fast){
