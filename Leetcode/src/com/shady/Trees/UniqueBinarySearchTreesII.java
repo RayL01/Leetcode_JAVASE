@@ -1,5 +1,7 @@
 package com.shady.Trees;
 
+import org.junit.Test;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -47,5 +49,17 @@ public class UniqueBinarySearchTreesII {
       return list;
 
     }
+
   }
+  @Test
+  public void test(){
+    Solution solution = new Solution();
+    for (TreeNode node: solution.generateTrees(3)
+    ) {
+      System.out.println(node.val);
+    }
+  }
+
+
+
 }
