@@ -10,6 +10,9 @@ package com.shady.OOP.metamorphism;
 public class Person {
   public int age;
 
+  public Person() {
+  }
+
   public Person(int age) {
     this.age = age;
   }

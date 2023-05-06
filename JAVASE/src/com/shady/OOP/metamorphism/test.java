@@ -15,4 +15,8 @@ public class test {
     Person[] people = new Person[3];
     people[0] = new Person(5);
   }
+  @Test
+  public void test1(){
+    Person person = new Student();
+  }
 }
