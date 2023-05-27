@@ -1,51 +1,31 @@
 package com.shady.Trees;
 
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @Author: shadyyyyyl
+ * @Date: 2023/03/28/20:36
+ * @Description:
+ */
 public class BinaryTreeLongestConsecutiveSequence {
-    int res = 0;
+  int res = 0;
+  public int longestConsecutive(TreeNode root) {
+    traverse(root, 1, Integer.MAX_VALUE);
+    return res;
+  }
+  private void traverse(TreeNode root, int length, int parentVal){
+    if(root == null) return;
 
-    public int longestConsecutive(TreeNode root) {
-        traverse(root);
-        return res;
+
+    if(root.val == parentVal + 1){
+      length++;
+    }else{
+      //Otherwise, we should reset the length
+      length = 1;
     }
-
-    /**
-     * left:   递减， 递增
-     *
-     * right: 递减， 递增
-     */
-
-    private int []  traverse(TreeNode root){
-        if(root == null) return new int[]{0,0};
-
-        int[] left = traverse(root.left);
-        int[] right = traverse(root.right);
-
-        int leftAscend = left[0], leftDescend = left[1];
-        int rightAscend = right[0], rightDescend = right[1];
-        int ascendInc = 1, descendInc = 1;
-        if(root.left != null){
-            if(root.left.val == root.val + 1){
-                //Ascending  order
-                ascendInc += leftAscend;
-            }else if(root.left.val == root.val - 1){
-                descendInc += leftDescend;
-            }
-        }
-
-        if(root.right != null){
-            if(root.right.val == root.val + 1){
-                ascendInc = Math.max(ascendInc, rightAscend + 1);
-            }else if(root.right.val == root.val -1){
-                descendInc = Math.max(descendInc, rightDescend + 1);
-            }
-        }
-
-        //update the result
-        res = Math.max(res, ascendInc + descendInc - 1);
-
-
-        return new int[]{ascendInc, descendInc};
-
-
-    }
+    res = Math.max(res, length);
+    //And compare the current length with res
+    traverse(root.left, length, root.val);
+    traverse(root.right, length, root.val);
+  }
 }

@@ -4,4 +4,5 @@ package com.shady.socket;/**
  * @Date: 2022/12/05/15:55
  * @Description: 
  */public class TCP1 {
+   Integer integer;
 }
