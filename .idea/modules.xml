@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/JAVASE/JAVASE.iml" filepath="$PROJECT_DIR$/JAVASE/JAVASE.iml" />
       <module fileurl="file://$PROJECT_DIR$/Leetcode/Leetcode.iml" filepath="$PROJECT_DIR$/Leetcode/Leetcode.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Leetcode_JAVASE.iml" filepath="$PROJECT_DIR$/.idea/Leetcode_JAVASE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TiktokOA/TiktokOA.iml" filepath="$PROJECT_DIR$/TiktokOA/TiktokOA.iml" />
     </modules>
   </component>
 </project>
