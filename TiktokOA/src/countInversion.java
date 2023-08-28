@@ -1,5 +1,10 @@
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -11,10 +16,14 @@ public class countInversion {
   @Test
           public void test(){
     int res = count(new int[]{
-            2, 4,1
+            7,8,5,2,5
     });
 
     System.out.println(res);
+    int[] ints = new int[1];
+    Arrays.sort(ints);
+    List<Integer> list = new ArrayList<>();
+    Collections.sort(list);
   }
 
 
