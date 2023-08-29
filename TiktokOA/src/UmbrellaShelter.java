@@ -1,5 +1,8 @@
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -12,6 +15,8 @@ public class UmbrellaShelter {
   public void test(){
     int res = calculateMinimalNumberOfUmbrella(6, new int[]{1, 2, 3, 5, 6});
     System.out.println(res);
+    Map<Integer, Integer> map = new HashMap<>();
+    map.put(0, map.getOrDefault(0, 0) + 1);
   }
   public int calculateMinimalNumberOfUmbrella(int requirement, int[] umbrellas){
     int[] dp = new int[requirement + 1];
