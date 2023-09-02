@@ -34,7 +34,6 @@ public class divideArrayIntoSubarrayWithSumNoGreaterThanM {
       for (int k = i; k >= 0; k--) {
         int sum = 0; // since we want to make sure that sum of the current subarray is not greater than M
         sum = prefix[i + 1] - prefix[i - k];
-        int currentMaxValue = 0;
         if(sum > M) continue;
         if(k == i){
           //in this case i - k - 1 < 0 so dp[i - k - 1] will just be 0
