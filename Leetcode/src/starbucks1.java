@@ -54,7 +54,7 @@ public class starbucks1 {
     String charValue0 = "01111001111111111011111111";
     int result0 = getSpecialSubstring(s0, k0, charValue0);
     System.out.println(result0);  // Expected output: 3
-
+//
     // Test Case 1
     String s1 = "special";
     int k1 = 1;
