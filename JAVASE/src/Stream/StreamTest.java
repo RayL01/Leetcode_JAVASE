@@ -5,7 +5,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -18,10 +22,23 @@ import java.util.stream.Stream;
  * @Description:
  */
 public class StreamTest {
+  class Tit{
+    int i;
+    int j;
+    public Tit(int i,  int j){
+      this.i = i;
+      this.j = j;
+    }
+  }
   @Test
   public void testStream(){
     int[] arr1 = new int[]{1, 2, 3};
     IntStream stream = Arrays.stream(arr1);
+    Queue<Tit> pq = new PriorityQueue();
+    Map<Integer, Integer> map = new HashMap<>();
+
+
+    List<Integer> re  = new ArrayList<>();
     List<Integer> res = new ArrayList<>();
     Stream<Integer> stream1 = Arrays.asList(1, 2, 3).stream();
     Stream<Integer> stream2 = Stream.of(1, 2, 3);
@@ -31,7 +48,6 @@ public class StreamTest {
     List<Integer> collect = Arrays.stream(arr1)
             .boxed()
             .collect(Collectors.toList());
-
 
 
     int[][] twoDArray = new int[][]{

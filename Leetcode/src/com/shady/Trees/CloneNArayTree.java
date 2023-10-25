@@ -9,6 +9,6 @@ package com.shady.Trees;
  */
 public class CloneNArayTree {
   public Node cloneTree(Node root) {
-
+    return null;
   }
 }

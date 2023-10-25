@@ -24,6 +24,9 @@ public class countInversion {
     Arrays.sort(ints);
     List<Integer> list = new ArrayList<>();
     Collections.sort(list);
+
+
+    int[] r = new int[]{1, 2, 3};
   }
 
 
@@ -132,7 +135,10 @@ public class countInversion {
     //     *
     //     *  3 9 27 28 43 10 82
     //     *
-    //     *
+
+
+
+
     //     *
     //     */
     // 2        4

@@ -2,6 +2,7 @@ import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -15,8 +16,8 @@ import java.util.Queue;
 public class MaximizingTaskPriority {
   @Test
   public void test(){
-    int res = getMaxPrioritySum(3, new int[]{3, 1, 2}, 5, 7);
-    System.out.println(res);
+//    int res = maximumPrioritySum(3, new int[]{3, 1, 2}, 5, 7);
+//    System.out.println(res);
   }
 
   public static class Task {
@@ -29,40 +30,31 @@ public class MaximizingTaskPriority {
     }
   }
 
-  public static int getMaxPrioritySum(int n, int[] priority, int x, int y) {
-    // Max heap to keep track of highest priority tasks
-    PriorityQueue<Task> maxPriority = new PriorityQueue<Task>((a, b) -> {
-      if(a.nextAvailableTime == b.nextAvailableTime){
-        //in this case, we sort the queue by priority in descending order
-        return -Integer.compare(a.priority, b.priority);
-      }else{
-        return Integer.compare(a.nextAvailableTime, b.nextAvailableTime);
-      }
-    });
+  public static int maximumPrioritySum(List<Integer> priority, int x, int y) {
+    PriorityQueue<Task> maxPriority = new PriorityQueue<>((a, b) -> Integer.compare(a.nextAvailableTime, b.nextAvailableTime));
+    PriorityQueue<Task> maxHeap = new PriorityQueue<>((a, b) -> -Integer.compare(a.priority, b.priority));
 
-    //we initialize each task object with original value = 0 for the time
     for (int p : priority) {
-      maxPriority.add(new Task(p, 0));
+      Task newTask = new Task(p, 0);
+      maxPriority.add(newTask);
+      maxHeap.add(newTask);
     }
 
     int sum = 0;
     for (int t = 1; t <= y; t++) {
-      Task task = maxPriority.peek();
-      //now we check whether the time is smaller than the current time 't'
-      int time = task.nextAvailableTime;
-      if(time > t){
-        continue;
-      }else{
-        //pop up the task from pq and update its next time and put it back to the queue
-        maxPriority.poll();
-        int curPriority = task.priority;
-
-        //update sum
-        sum += curPriority;
-        maxPriority.add(new Task(curPriority, t + x));
+      while (!maxPriority.isEmpty() && maxPriority.peek().nextAvailableTime <= t) {
+        Task task = maxPriority.poll();
+        maxHeap.add(task);
       }
 
+      if (!maxHeap.isEmpty()) {
+        Task task = maxHeap.poll();
+        sum += task.priority;
+        task.nextAvailableTime = t + x;
+        maxPriority.add(task);
+      }
     }
     return sum;
   }
+
 }
