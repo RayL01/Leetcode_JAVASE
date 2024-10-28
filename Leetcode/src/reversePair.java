@@ -1,5 +1,5 @@
-import org.junit.Assert;
-import org.junit.Test;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,14 +9,7 @@ import org.junit.Test;
  * @Description:
  */
 public class reversePair {
-  @Test
-  public void test(){
-    int[] test = new int[]{6,2};
-    int[] expected = new int[]{2,6};
-    reverse(test);
-    Assert.assertArrayEquals(expected, test);
-
-  }
+  
   public void reverse(int[] arr){
     int firstIndex;
     int secondIndex;
@@ -27,6 +20,20 @@ public class reversePair {
       int tmp = arr[firstIndex];
       arr[firstIndex] = arr[secondIndex];
       arr[secondIndex] = tmp;
+
     }
+    
+  }
+  public static void main(String[] args) {
+    Map<Integer,Integer> map = new HashMap<>();
+    //iterate through the map
+    for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+      System.out.println("Key = " + entry.getKey() +
+          ", Value = " + entry.getValue());
+
+    }
+    String s = " ";
+    s += "ab";
+    System.out.println(s);
   }
 }

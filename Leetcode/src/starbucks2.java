@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * Created with IntelliJ IDEA.
  *
@@ -9,6 +8,7 @@ import java.util.List;
  * @Description:
  */
 public class starbucks2 {
+
   public static List<String> bitPattern(int[] numbers) {
     StringBuilder pattern1 = new StringBuilder();
     StringBuilder pattern2 = new StringBuilder();

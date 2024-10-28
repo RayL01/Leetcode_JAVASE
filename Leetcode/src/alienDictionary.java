@@ -1,9 +1,13 @@
+import org.junit.Test;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Deque;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Stack;
 
 /**
@@ -14,6 +18,7 @@ import java.util.Stack;
  * @Description:
  */
 public class alienDictionary {
+
 
 
 
@@ -70,6 +75,8 @@ public class alienDictionary {
       hasCycle = true;
       return;
     }
+    StringBuilder sb = new StringBuilder();
+
     if(visited[start - 'a']) return;
     if(hasCycle) return;
     onPath[start - 'a'] = true;
@@ -80,5 +87,11 @@ public class alienDictionary {
     }
     postorder.add(start);
     onPath[start - 'a'] =false;
+    PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
+      @Override
+      public int compare(Integer o1, Integer o2) {
+        return 0;
+      }
+    });
   }
 }
